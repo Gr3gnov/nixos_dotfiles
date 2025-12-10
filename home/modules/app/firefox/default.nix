@@ -8,27 +8,37 @@
 let
   cfg = config.my.app.firefox;
   firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
+  zen-package = inputs.zen-browser.packages.${pkgs.system}.default;
 in
 {
-  options.my.app.firefox.enable = lib.mkEnableOption "Firefox with policies & extensions";
+  options.my.app.firefox.enable = lib.mkEnableOption "Zen with policies & extensions";
+  
   config = lib.mkIf cfg.enable {
+    
+    home.packages = [ zen-package ];
+    
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "default-web-browser" = [ "firefox.desktop" ];
-        "text/html" = [ "firefox.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
-        "x-scheme-handler/about" = [ "firefox.desktop" ];
-        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-        "application/pdf" = [ "firefox.desktop" ];
+        "default-web-browser" = [ "zen.desktop" ];
+        "text/html" = [ "zen.desktop" ];
+        "x-scheme-handler/http" = [ "zen.desktop" ];
+        "x-scheme-handler/https" = [ "zen.desktop" ];
+        "x-scheme-handler/about" = [ "zen.desktop" ];
+        "x-scheme-handler/unknown" = [ "zen.desktop" ];
+        "application/pdf" = [ "zen.desktop" ];
       };
     };
 
     programs.firefox = {
       enable = true;
+      
+      package = lib.makeOverridable (conf: pkgs.runCommand "firefox-dummy" {} ''
+        mkdir -p $out/bin
+        touch $out/bin/firefox 
+        chmod +x $out/bin/firefox
+      '') {};
 
-      # Check about:policies#documentation for options
       policies = import ./policies.nix;
 
       profiles.default = {
@@ -40,5 +50,8 @@ in
         settings = import ./settings.nix;
       };
     };
-  };
+
+    home.file.".zen".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox";
+    
+  }; 
 }
