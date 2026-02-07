@@ -16,10 +16,6 @@ in
       # Code
       antigravity
       git
-
-      # Theming
-      papirus-icon-theme
-      bibata-cursors
     ];
     fonts.packages = with pkgs; [
       fira-code-symbols

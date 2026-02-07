@@ -8,7 +8,7 @@
 let
   cfg = config.my.app.firefox;
   firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
-  zen-package = inputs.zen-browser.packages.${pkgs.system}.default;
+  zen-package = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   options.my.app.firefox.enable = lib.mkEnableOption "Zen with policies & extensions";
