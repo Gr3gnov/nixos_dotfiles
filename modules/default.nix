@@ -8,10 +8,9 @@
 
     ./hardware/nvidia.nix
     ./hardware/sound.nix
-    ./hardware/input.nix
     ./hardware/logitech.nix
 
-    ./programs/hyprland.nix
+    ./programs/plasma.nix
     ./programs/steam.nix
 
   ];

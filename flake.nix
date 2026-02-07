@@ -6,8 +6,8 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.url = "github:nix-community/plasma-manager";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    dankMaterialShell.url = "github:AvengeMedia/DankMaterialShell";
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -39,6 +39,7 @@
 
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "backup";
+              home-manager.overwriteBackup = true;
             }
           ];
         };

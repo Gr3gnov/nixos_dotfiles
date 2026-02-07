@@ -8,9 +8,8 @@
 
   my.hardware.nvidia.enable = true;
   my.hardware.sound.enable = true;
-  my.hardware.input.enable = true;
   my.hardware.logitech.enable = true;
-  my.programs.hyprland.enable = true;
+  my.programs.plasma.enable = true;
   my.core.gc.enable = true;
   my.core.essentials.enable = true;
   my.core.user.enable = true;

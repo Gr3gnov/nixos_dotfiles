@@ -4,7 +4,7 @@
   imports = [
     ./shell/shell.nix
     ./gui/terminal.nix
-    ./gui/hyprland.nix
+    ./gui/plasma-shortcuts.nix
     ./app
   ];
 }
