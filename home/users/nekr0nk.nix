@@ -51,7 +51,11 @@
         { layout = "us"; }
         { layout = "ru"; }
       ];
-      options = [ "grp:win_space_toggle" ];
+      options = [
+        "grp:ctrl_space_toggle"
+        "ctrl:swap_lwin_lctl"
+        "ctrl:swap_rwin_rctl"
+      ];
     };
   };
 }
