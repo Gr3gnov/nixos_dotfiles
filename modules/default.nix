@@ -4,6 +4,7 @@
   imports = [
     ./core/garbage-collector.nix
     ./core/fonts.nix
+    ./core/nix.nix
     ./core/packages.nix
     ./core/user.nix
 

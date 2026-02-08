@@ -2,6 +2,8 @@
   config,
   lib,
   pkgs,
+  username,
+  userHome,
   ...
 }:
 
@@ -9,12 +11,13 @@ let
   cfg = config.my.core.user;
 in
 {
-  options.my.core.user.enable = lib.mkEnableOption "Nekr0nk User Config";
+  options.my.core.user.enable = lib.mkEnableOption "Primary user config";
 
   config = lib.mkIf cfg.enable {
-    users.users.nekr0nk = {
+    users.users.${username} = {
       isNormalUser = true;
-      description = "nekr0nk";
+      description = username;
+      home = userHome;
       extraGroups = [
         "networkmanager"
         "wheel"

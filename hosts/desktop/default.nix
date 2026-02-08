@@ -13,13 +13,10 @@
   my.core.gc.enable = true;
   my.core.essentials.enable = true;
   my.core.fonts.enable = true;
+  my.core.nix.enable = true;
   my.core.user.enable = true;
   my.programs.steam.enable = true;
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.loader.systemd-boot = {
     enable = true;
@@ -36,7 +33,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   virtualisation.docker.enable = true;
-  nixpkgs.config.allowUnfree = true;
   services.printing.enable = false;
   documentation.nixos.enable = false;
   system.stateVersion = "25.11";

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -9,20 +8,11 @@ let
   cfg = config.my.gui.terminal;
 in
 {
-  options.my.gui.terminal.enable = lib.mkEnableOption "Alacritty Terminal";
+  options.my.gui.terminal.enable = lib.mkEnableOption "Alacritty terminal";
 
   config = lib.mkIf cfg.enable {
     programs.alacritty = {
       enable = true;
-
-      package = (
-        pkgs.alacritty.overrideAttrs (old: {
-          nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
-          postInstall = (old.postInstall or "") + ''
-            wrapProgram $out/bin/alacritty --set LIBGL_ALWAYS_SOFTWARE 1
-          '';
-        })
-      );
 
       settings = {
         env.TERM = "xterm-256color";
@@ -87,12 +77,12 @@ in
           # move-to beginning/end of line
           {
             key = "Right";
-            mods = "Command";
+            mods = "Super";
             chars = "\\u0005";
           }
           {
             key = "Left";
-            mods = "Command";
+            mods = "Super";
             chars = "\\u0001";
           }
           # remove all text

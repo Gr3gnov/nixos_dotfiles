@@ -1,5 +1,7 @@
 {
   pkgs,
+  username,
+  userHome,
   ...
 }:
 
@@ -8,8 +10,8 @@
     ../modules
   ];
 
-  home.username = "nekr0nk";
-  home.homeDirectory = "/home/nekr0nk";
+  home.username = username;
+  home.homeDirectory = userHome;
 
   home.stateVersion = "25.11";
 
