@@ -54,6 +54,11 @@ in
             action = "Copy";
           }
           {
+            key = "Q";
+            mods = "Control";
+            action = "Quit";
+          }
+          {
             key = "V";
             mods = "Control";
             action = "Paste";
