@@ -28,7 +28,6 @@ in
           "x-scheme-handler/https" = [ zenDesktopFile ];
           "x-scheme-handler/about" = [ zenDesktopFile ];
           "x-scheme-handler/unknown" = [ zenDesktopFile ];
-          "application/pdf" = [ zenDesktopFile ];
         };
       };
 

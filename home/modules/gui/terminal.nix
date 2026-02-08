@@ -48,6 +48,9 @@ in
         cursor.style.shape = "Beam";
 
         keyboard.bindings = [
+          # With Ctrl/Meta swap in Plasma:
+          # - Physical Cmd/Win uses logical Control bindings.
+          # - Physical Control uses logical Super bindings.
           {
             key = "C";
             mods = "Control";
@@ -66,6 +69,7 @@ in
           {
             key = "C";
             mods = "Super";
+            # Keep SIGINT on physical Control+C.
             chars = "\\u0003";
           }
           # move-to by words

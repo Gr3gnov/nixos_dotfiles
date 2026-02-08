@@ -5,7 +5,6 @@
     };
     plasmashell = {
       "activate application launcher" = "none";
-      "manage activities" = "none";
     };
   };
 }

@@ -1,4 +1,7 @@
 {
+  # Keyboard swap note:
+  # - Physical Win/Cmd key acts as logical Control.
+  # - Physical Control key acts as logical Meta/Super.
   programs.plasma.input.keyboard = {
     layouts = [
       { layout = "us"; }

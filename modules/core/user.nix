@@ -23,7 +23,6 @@ in
         "wheel"
         "docker"
       ];
-      packages = [ ];
       shell = pkgs.zsh;
     };
 

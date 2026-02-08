@@ -33,8 +33,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   virtualisation.docker.enable = true;
-  services.printing.enable = false;
-  documentation.nixos.enable = false;
   system.stateVersion = "25.11";
 
 }

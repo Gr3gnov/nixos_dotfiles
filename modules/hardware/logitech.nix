@@ -25,65 +25,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.logiops ];
 
-    environment.etc."logid.cfg".text = ''
-      devices: (
-        {
-          name: "MX Master 4";
-
-          smartshift: {
-            on: true;
-            threshold: 20;
-          };
-          hiresscroll: {
-            hires: false;
-            invert: false;
-            target: false;
-          };
-
-          dpi: 1000;
-
-          thumbwheel: {
-            divert: true;
-            invert: false;
-
-            left: {
-              mode: "OnInterval";
-              interval: 4;
-              action: {
-                type: "Keypress";
-                keys: ["KEY_LEFTCTRL", "KEY_LEFTBRACE"];
-              };
-            };
-
-            right: {
-              mode: "OnInterval";
-              interval: 4;
-              action: {
-                type: "Keypress";
-                keys: ["KEY_LEFTCTRL", "KEY_RIGHTBRACE"];
-              };
-            };
-          };
-
-          buttons: (
-            {
-              cid: 0xc3;
-              action = {
-                type: "Keypress";
-                keys: ["KEY_LEFTCTRL"];
-              };
-            },
-            {
-              cid: 0x1a0;
-              action = {
-                type: "Keypress";
-                    keys: ["KEY_LEFTMETA", "KEY_TAB"];
-              };
-            }
-          );
-        }
-      );
-    '';
+    environment.etc."logid.cfg".text = builtins.readFile ./logid.cfg;
 
     systemd.services.logiops = {
       enable = true;
