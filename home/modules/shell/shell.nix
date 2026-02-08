@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -30,6 +29,7 @@ in
 
         repomix = "docker run -v .:/app -it --rm ghcr.io/yamadashy/repomix";
         osrebuild = "git add . && sudo nixos-rebuild switch --flake .#nixos";
+        nfmt = "nixfmt $(rg --files -g '*.nix')";
       };
 
       oh-my-zsh = {

@@ -70,7 +70,7 @@ in
               cid: 0xc3;
               action = {
                 type: "Keypress";
-                keys: ["KEY_LEFTCTRL"]; 
+                keys: ["KEY_LEFTCTRL"];
               };
             },
             {

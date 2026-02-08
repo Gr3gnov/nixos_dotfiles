@@ -9,7 +9,7 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    firefox-addons = {
+    addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -23,7 +23,7 @@
       ...
     }@inputs:
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

@@ -1,5 +1,5 @@
-{ firefox-addons, ... }:
-with firefox-addons;
+{ addons, ... }:
+with addons;
 [
   ublock-origin
   bitwarden

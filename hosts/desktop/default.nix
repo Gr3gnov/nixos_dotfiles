@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -12,6 +12,7 @@
   my.programs.plasma.enable = true;
   my.core.gc.enable = true;
   my.core.essentials.enable = true;
+  my.core.fonts.enable = true;
   my.core.user.enable = true;
   my.programs.steam.enable = true;
 
@@ -19,7 +20,7 @@
     "nix-command"
     "flakes"
   ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 15;
@@ -40,13 +41,4 @@
   documentation.nixos.enable = false;
   system.stateVersion = "25.11";
 
-  fonts = {
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "Noto Serif" ];
-        sansSerif = [ "Noto Sans" ];
-        monospace = [ "FiraCode Nerd Font Mono" ];
-      };
-    };
-  };
 }

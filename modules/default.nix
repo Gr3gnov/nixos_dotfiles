@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
     ./core/garbage-collector.nix
+    ./core/fonts.nix
     ./core/packages.nix
     ./core/user.nix
 
@@ -12,6 +13,5 @@
 
     ./programs/plasma.nix
     ./programs/steam.nix
-
   ];
 }

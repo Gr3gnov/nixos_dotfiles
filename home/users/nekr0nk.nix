@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }:
@@ -17,11 +16,11 @@
   programs.home-manager.enable = true;
   my.gui.terminal.enable = true;
   my.shell.zsh.enable = true;
-  my.app.firefox.enable = true;
+  my.app.zen.enable = true;
 
   home.packages = with pkgs; [
     vscode
-    nixfmt-rfc-style
+    nixfmt
     telegram-desktop
     discord
     yandex-music
