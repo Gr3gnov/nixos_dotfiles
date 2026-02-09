@@ -6,6 +6,10 @@
     shortcuts = {
       kwin = {
         "Window Close" = "Ctrl+Q";
+        "Walk Through Windows" = "Ctrl+Tab";
+        "Walk Through Windows (Reverse)" = "Ctrl+Shift+Tab";
+        "Walk Through Windows of Current Application" = "Alt+Tab";
+        "Walk Through Windows of Current Application (Reverse)" = "Alt+Shift+Tab";
       };
       plasmashell = {
         "activate application launcher" = "none";
