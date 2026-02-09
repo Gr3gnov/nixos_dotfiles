@@ -5,6 +5,7 @@
     inputs.plasma-manager.homeModules.plasma-manager
     ./input.nix
     ./krunner.nix
+    ./spectacle.nix
     ./shortcuts.nix
   ];
 
