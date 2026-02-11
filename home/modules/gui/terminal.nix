@@ -48,7 +48,7 @@ in
         cursor.style.shape = "Beam";
 
         keyboard.bindings = [
-          # With Ctrl/Meta swap in Plasma:
+          # With the system keyboard remap:
           # - Physical Cmd/Win uses logical Control bindings.
           # - Physical Control uses logical Super bindings.
           {

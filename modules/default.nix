@@ -12,7 +12,7 @@
     ./hardware/sound.nix
     ./hardware/logitech.nix
 
-    ./programs/plasma.nix
+    ./programs/hyprland.nix
     ./programs/steam.nix
   ];
 }
