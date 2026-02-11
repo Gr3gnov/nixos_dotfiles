@@ -20,6 +20,7 @@ in
       shellAliases = {
         py = "python3";
         ipy = "ipython";
+        code = "env -u NIXOS_OZONE_WL code";
         l = "eza -lh  --icons=auto";
         ls = "eza -1   --icons=auto";
         ll = "eza -lha --icons=auto --sort=name --group-directories-first";
