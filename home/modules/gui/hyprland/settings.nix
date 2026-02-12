@@ -1,5 +1,10 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
+let
+  launchYandexMusic = "${lib.getExe' pkgs.gtk3 "gtk-launch"} yandex-music-web";
+  launchTelegram = lib.getExe pkgs.telegram-desktop;
+  launchDiscord = lib.getExe pkgs.discord;
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -28,6 +33,9 @@
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user start dms.service"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        launchYandexMusic
+        launchTelegram
+        launchDiscord
       ];
 
       input = {

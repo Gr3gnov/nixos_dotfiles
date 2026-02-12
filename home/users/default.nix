@@ -19,13 +19,13 @@
   my.gui.terminal.enable = true;
   my.shell.zsh.enable = true;
   my.app.zen.enable = true;
+  my.app.yandexMusicWeb.enable = true;
 
   home.packages = with pkgs; [
     vscode
     nixfmt
     telegram-desktop
     discord
-    yandex-music
   ];
 
 }
