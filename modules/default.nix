@@ -11,6 +11,7 @@
     ./hardware/nvidia.nix
     ./hardware/sound.nix
     ./hardware/logitech.nix
+    ./hardware/power.nix
 
     ./programs/hyprland.nix
     ./programs/steam.nix

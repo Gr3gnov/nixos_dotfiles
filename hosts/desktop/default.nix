@@ -9,6 +9,7 @@
   my.hardware.nvidia.enable = true;
   my.hardware.sound.enable = true;
   my.hardware.logitech.enable = true;
+  my.hardware.power.enable = true;
   my.programs.hyprland.enable = true;
   my.core.gc.enable = true;
   my.core.essentials.enable = true;
@@ -33,6 +34,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   virtualisation.docker.enable = true;
+
   system.stateVersion = "25.11";
 
 }

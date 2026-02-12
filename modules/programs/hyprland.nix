@@ -17,7 +17,6 @@ in
       xwayland.enable = true;
     };
 
-    # Packaged in nixpkgs from AvengeMedia/DankMaterialShell.
     programs.dms-shell.enable = true;
 
     services.greetd.enable = true;
