@@ -8,7 +8,8 @@ let
   cfg = config.my.programs.hyprland;
 in
 {
-  options.my.programs.hyprland.enable = lib.mkEnableOption "Hyprland with greetd, ReGreet, and DankMaterialShell";
+  options.my.programs.hyprland.enable =
+    lib.mkEnableOption "Hyprland with greetd, ReGreet, and DankMaterialShell";
 
   config = lib.mkIf cfg.enable {
     programs.hyprland = {
@@ -30,9 +31,12 @@ in
 
     security.polkit.enable = true;
 
-    xdg.portal.extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    xdg.portal = {
+      enable = lib.mkDefault true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";

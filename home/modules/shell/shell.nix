@@ -20,9 +20,10 @@ in
       shellAliases = {
         py = "python3";
         ipy = "ipython";
+        # Keep VSCode on XWayland mode to avoid Electron/Wayland issues.
         code = "env -u NIXOS_OZONE_WL code";
-        l = "eza -lh  --icons=auto";
-        ls = "eza -1   --icons=auto";
+        l = "eza -lh --icons=auto";
+        ls = "eza -1 --icons=auto";
         ll = "eza -lha --icons=auto --sort=name --group-directories-first";
 
         gs = "git status";

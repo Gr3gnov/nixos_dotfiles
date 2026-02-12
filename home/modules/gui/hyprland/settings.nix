@@ -1,9 +1,23 @@
 { lib, pkgs, ... }:
 
 let
+  cursorTheme = "Bibata-Modern-Ice";
+  cursorSize = "24";
+
   launchYandexMusic = "${lib.getExe' pkgs.gtk3 "gtk-launch"} yandex-music-web";
   launchTelegram = lib.getExe pkgs.telegram-desktop;
   launchDiscord = lib.getExe pkgs.discord;
+
+  autostartCore = [
+    "dbus-update-activation-environment --systemd --all"
+    "systemctl --user start dms.service"
+    "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+  ];
+  autostartApps = [
+    launchYandexMusic
+    launchTelegram
+    launchDiscord
+  ];
 in
 {
   wayland.windowManager.hyprland = {
@@ -25,18 +39,11 @@ in
       ];
 
       env = [
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE,24"
+        "XCURSOR_THEME,${cursorTheme}"
+        "XCURSOR_SIZE,${cursorSize}"
       ];
 
-      exec-once = [
-        "dbus-update-activation-environment --systemd --all"
-        "systemctl --user start dms.service"
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        launchYandexMusic
-        launchTelegram
-        launchDiscord
-      ];
+      exec-once = autostartCore ++ autostartApps;
 
       input = {
         kb_layout = "us,ru";

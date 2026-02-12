@@ -18,6 +18,7 @@
 }:
 let
   cfg = config.my.hardware.logitech;
+  logidConfigPath = "/etc/logid.cfg";
 in
 {
   options.my.hardware.logitech.enable = lib.mkEnableOption "Logitech drivers";
@@ -25,7 +26,8 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.logiops ];
 
-    environment.etc."logid.cfg".text = builtins.readFile ./logid.cfg;
+    # Keep button/action mapping in a dedicated file for easier editing.
+    environment.etc."logid.cfg".source = ./logid.cfg;
 
     systemd.services.logiops = {
       enable = true;
@@ -33,7 +35,7 @@ in
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
-        ExecStart = "${pkgs.logiops}/bin/logid -c /etc/logid.cfg";
+        ExecStart = "${pkgs.logiops}/bin/logid -c ${logidConfigPath}";
         Type = "simple";
         User = "root";
         Restart = "always";

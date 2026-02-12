@@ -1,37 +1,51 @@
-{ ... }:
+{ lib, ... }:
 
 let
-  social_workspace = "3";
+  socialWorkspace = "3";
 
   telegramClass = "^(org.telegram.desktop|telegram-desktop|TelegramDesktop)$";
   discordClass = "^(discord|Discord)$";
-  yandexMusicClass = "^(yandex-music-web|chrome-music\\.yandex\\.com(--|__-)Default)$";
+
+  # Chromium app windows can expose class names in multiple generated forms.
+  yandexMusicClasses = [
+    "yandex-music-web"
+    "chrome-music\\.yandex\\.com(--|__-)Default"
+  ];
+  yandexMusicClass = "^(${lib.concatStringsSep "|" yandexMusicClasses})$";
+
+  mkSocialRule =
+    {
+      name,
+      classRegex,
+      size,
+      move,
+    }:
+    {
+      inherit name size move;
+      "match:class" = classRegex;
+      workspace = "${socialWorkspace} silent";
+      float = "yes";
+    };
 in
 {
   wayland.windowManager.hyprland.settings.windowrule = [
-    {
+    (mkSocialRule {
       name = "preset-ws3-yandex-music";
-      "match:class" = yandexMusicClass;
-      workspace = "${social_workspace} silent";
-      float = "yes";
+      classRegex = yandexMusicClass;
       size = "760 1370";
       move = "10 60";
-    }
-    {
+    })
+    (mkSocialRule {
       name = "preset-ws3-telegram";
-      "match:class" = telegramClass;
-      workspace = "${social_workspace} silent";
-      float = "yes";
+      classRegex = telegramClass;
       size = "850 1370";
       move = "790 60";
-    }
-    {
+    })
+    (mkSocialRule {
       name = "preset-ws3-discord";
-      "match:class" = discordClass;
-      workspace = "${social_workspace} silent";
-      float = "yes";
+      classRegex = discordClass;
       size = "1770 1370";
       move = "1660 60";
-    }
+    })
   ];
 }

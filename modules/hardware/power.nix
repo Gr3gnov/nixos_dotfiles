@@ -11,6 +11,8 @@ in
   options.my.hardware.power.enable = lib.mkEnableOption "Force a fixed power profile";
 
   config = lib.mkIf cfg.enable {
+    services.power-profiles-daemon.enable = lib.mkDefault true;
+
     systemd.services.force-performance-profile = {
       description = "Force power profile to performance";
       wantedBy = [ "multi-user.target" ];

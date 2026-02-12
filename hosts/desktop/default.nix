@@ -6,16 +6,21 @@
     ../../modules
   ];
 
-  my.hardware.nvidia.enable = true;
-  my.hardware.sound.enable = true;
-  my.hardware.logitech.enable = true;
-  my.hardware.power.enable = true;
-  my.programs.hyprland.enable = true;
+  # Base system modules
   my.core.gc.enable = true;
   my.core.essentials.enable = true;
   my.core.fonts.enable = true;
   my.core.nix.enable = true;
   my.core.user.enable = true;
+
+  # Hardware modules
+  my.hardware.nvidia.enable = true;
+  my.hardware.sound.enable = true;
+  my.hardware.logitech.enable = true;
+  my.hardware.power.enable = true;
+
+  # Programs modules
+  my.programs.hyprland.enable = true;
   my.programs.steam.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;
@@ -36,5 +41,4 @@
   virtualisation.docker.enable = true;
 
   system.stateVersion = "25.11";
-
 }

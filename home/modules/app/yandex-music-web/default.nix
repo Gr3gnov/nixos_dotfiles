@@ -28,7 +28,8 @@ in
   options.my.app.yandexMusicWeb.enable = lib.mkEnableOption "Yandex Music web app in Chromium";
 
   config = lib.mkIf cfg.enable {
-    home.file.".local/share/icons/hicolor/scalable/apps/${appId}.svg".source = ./assets/yandex-music.svg;
+    home.file.".local/share/icons/hicolor/scalable/apps/${appId}.svg".source =
+      ./assets/yandex-music.svg;
 
     xdg.desktopEntries = {
       "${appId}" = commonDesktop // {
@@ -39,6 +40,7 @@ in
           "Network"
         ];
       };
-    } // generatedDesktopEntries;
+    }
+    // generatedDesktopEntries;
   };
 }
