@@ -7,6 +7,7 @@
       # - Physical Ctrl+Space -> dms spotlight.
       # - Physical Cmd+Space -> layout switch (from kb_options above).
       "$mod, SPACE, exec, dms ipc call spotlight toggle"
+      "$mod, TAB, exec, hyprctl dispatch hyprexpo:expo toggle"
 
       "$mod, RETURN, exec, alacritty"
       "$mod, E, exec, thunar"
@@ -36,6 +37,8 @@
       "$mod, 7, workspace, 7"
       "$mod, 8, workspace, 8"
       "$mod, 9, workspace, 9"
+      "$mod, period, workspace, m+1"
+      "$mod, comma, workspace, m-1"
 
       "$mod SHIFT, 1, movetoworkspace, 1"
       "$mod SHIFT, 2, movetoworkspace, 2"

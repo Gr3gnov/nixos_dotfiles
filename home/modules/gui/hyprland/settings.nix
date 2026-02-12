@@ -3,6 +3,9 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = [
+      pkgs.hyprlandPlugins.hyprexpo
+    ];
     systemd = {
       enable = true;
       variables = [ "--all" ];
@@ -49,7 +52,13 @@
         inactive_opacity = 0.95;
       };
 
-      animations.enabled = true;
+      animations = {
+        enabled = true;
+        # second value it is speed. Lower = faster
+        animation = [
+          "windowsMove, 1, 1, default"
+        ];
+      };
 
       misc = {
         disable_hyprland_logo = true;
