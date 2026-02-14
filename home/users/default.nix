@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   username,
   userHome,
@@ -7,6 +8,7 @@
 
 {
   imports = [
+    inputs.stylix.homeModules.stylix
     ../modules
   ];
 

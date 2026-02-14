@@ -10,7 +10,6 @@ let
 
   autostartCore = [
     "dbus-update-activation-environment --systemd --all"
-    "systemctl --user start dms.service"
     "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
   ];
   autostartApps = [
@@ -56,8 +55,6 @@ in
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(89b4fa)";
-        "col.inactive_border" = "rgb(3b4252)";
         layout = "dwindle";
       };
 

@@ -2,8 +2,9 @@
   imports = [
     ./scripts.nix
     ./packages.nix
+    ./ui.nix
+    ./session.nix
     ./settings.nix
-    ./dms.nix
     ./workspace-presets.nix
     ./binds.nix
   ];

@@ -9,7 +9,7 @@ let
 in
 {
   options.my.programs.hyprland.enable =
-    lib.mkEnableOption "Hyprland with greetd, ReGreet, and DankMaterialShell";
+    lib.mkEnableOption "Hyprland with greetd and ReGreet";
 
   config = lib.mkIf cfg.enable {
     programs.hyprland = {
@@ -17,8 +17,6 @@ in
       withUWSM = true;
       xwayland.enable = true;
     };
-
-    programs.dms-shell.enable = true;
 
     services.greetd.enable = true;
     services.displayManager.defaultSession = "hyprland";
@@ -30,6 +28,7 @@ in
     services.tumbler.enable = true;
 
     security.polkit.enable = true;
+    security.pam.services.hyprlock = { };
 
     xdg.portal = {
       enable = lib.mkDefault true;

@@ -4,14 +4,18 @@
   wayland.windowManager.hyprland.settings = {
     bind = [
       # Launcher:
-      # - Physical Ctrl+Space -> dms spotlight.
+      # - Physical Ctrl+Space -> rofi.
       # - Physical Cmd+Space -> layout switch (from kb_options above).
-      "$mod, SPACE, exec, dms ipc call spotlight toggle"
+      "$mod, SPACE, exec, rofi -show drun"
       "$mod, TAB, exec, hyprctl dispatch hyprexpo:expo toggle"
 
       "$mod, RETURN, exec, alacritty"
       "$mod, E, exec, thunar"
       "$mod, L, exec, hyprlock"
+      "$mod, C, exec, swaync-client -t -sw"
+      "$mod SHIFT, N, exec, swaync-client -d -sw"
+      "$mod, ESCAPE, exec, wlogout"
+      "$mod SHIFT, V, exec, cliphist list | rofi -dmenu -i -p clipboard | cliphist decode | wl-copy"
 
       "$mod, Q, killactive,"
       "$mod SHIFT, Q, exit,"
@@ -52,6 +56,18 @@
 
       # Physical Cmd+Shift+4 screenshot to clipboard.
       "CTRL SHIFT, 4, exec, screenshot-region-copy"
+    ];
+
+    binde = [
+      ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+      ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+      ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+      ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+    ];
+
+    bindl = [
+      ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+      ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     ];
 
     bindm = [
