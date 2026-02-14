@@ -29,5 +29,6 @@
     nixfmt
     telegram-desktop
     discord
+    zathura
   ];
 }
