@@ -13,6 +13,7 @@
       "$mod, E, exec, thunar"
       "$mod, L, global, caelestia:lock"
       "$mod, C, global, caelestia:showall"
+      "$mod, N, global, caelestia:sidebar"
       "$mod SHIFT, N, global, caelestia:clearNotifs"
       "$mod, ESCAPE, global, caelestia:session"
       "$mod SHIFT, V, exec, clipboard-history-picker"

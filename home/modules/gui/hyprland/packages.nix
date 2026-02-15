@@ -25,6 +25,11 @@ in
 {
   home.file.".local/share/icons/hicolor/scalable/apps/clipboard-history-picker.svg".source =
     "${pkgs.papirus-icon-theme}/share/icons/Papirus/24x24/apps/com.github.cryptowyrm.copypastegrab.svg";
+  # Make sure Blueman desktop icons always resolve in launchers.
+  home.file.".local/share/icons/hicolor/scalable/apps/blueman.svg".source =
+    "${pkgs.blueman}/share/icons/hicolor/scalable/apps/blueman.svg";
+  home.file.".local/share/icons/hicolor/scalable/devices/blueman-device.svg".source =
+    "${pkgs.blueman}/share/icons/hicolor/scalable/devices/blueman-device.svg";
 
   home.packages = with pkgs; [
     grim
