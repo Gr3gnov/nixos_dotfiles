@@ -24,6 +24,16 @@ in
       useFahrenheit = false;
       weatherLocation = "";
     };
+    settings.bar.status = {
+      showAudio = true;
+      showMicrophone = false;
+      showKbLayout = true;
+      showNetwork = true;
+      showWifi = true;
+      showBluetooth = true;
+      showBattery = true;
+      showLockStatus = true;
+    };
     settings.bar.popouts.activeWindow = false;
     settings.bar.entries = [
       {
