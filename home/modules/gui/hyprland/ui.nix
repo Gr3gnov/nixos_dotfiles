@@ -41,6 +41,10 @@ in
         enabled = true;
       }
       {
+        id = "clock";
+        enabled = true;
+      }
+      {
         id = "workspaces";
         enabled = true;
       }
@@ -58,10 +62,6 @@ in
       }
       {
         id = "tray";
-        enabled = true;
-      }
-      {
-        id = "clock";
         enabled = true;
       }
       {
