@@ -15,6 +15,12 @@ let
     "chrome-music.yandex.com--Default"
     "chrome-music.yandex.com__-Default"
   ];
+  appCategories = [
+    "AudioVideo"
+    "Audio"
+    "Player"
+    "Network"
+  ];
   appExec = "${pkgs.chromium}/bin/chromium --class=${appId} --hide-scrollbars --force-app-mode --app=${appUrl}";
   commonDesktop = {
     name = appName;
@@ -23,7 +29,10 @@ let
     terminal = false;
     type = "Application";
   };
-  generatedDesktopEntries = lib.genAttrs generatedAppIds (_: commonDesktop // { noDisplay = true; });
+  generatedDesktopEntries = lib.genAttrs generatedAppIds (_: commonDesktop // {
+    categories = appCategories;
+    noDisplay = true;
+  });
   yandexIconPath = assetsDir + "/yandex-music.svg";
 in
 {
@@ -35,12 +44,7 @@ in
 
     xdg.desktopEntries = {
       "${appId}" = commonDesktop // {
-        categories = [
-          "AudioVideo"
-          "Audio"
-          "Player"
-          "Network"
-        ];
+        categories = appCategories;
       };
     }
     // generatedDesktopEntries;
