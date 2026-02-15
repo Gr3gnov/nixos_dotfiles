@@ -56,6 +56,8 @@
 
       # Physical Cmd+Shift+4 screenshot to clipboard.
       "CTRL SHIFT, 4, exec, screenshot-region-copy"
+      # Physical Cmd+Shift+5 full screenshot to file (+ clipboard copy).
+      "CTRL SHIFT, 5, exec, screenshot-full-save"
     ];
 
     bindr = [
