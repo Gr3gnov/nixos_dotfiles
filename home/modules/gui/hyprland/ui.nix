@@ -24,6 +24,45 @@ in
       useFahrenheit = false;
       weatherLocation = "";
     };
+    settings.bar.popouts.activeWindow = false;
+    settings.bar.entries = [
+      {
+        id = "logo";
+        enabled = true;
+      }
+      {
+        id = "workspaces";
+        enabled = true;
+      }
+      {
+        id = "spacer";
+        enabled = true;
+      }
+      {
+        id = "activeWindow";
+        enabled = false;
+      }
+      {
+        id = "spacer";
+        enabled = true;
+      }
+      {
+        id = "tray";
+        enabled = true;
+      }
+      {
+        id = "clock";
+        enabled = true;
+      }
+      {
+        id = "statusIcons";
+        enabled = true;
+      }
+      {
+        id = "power";
+        enabled = true;
+      }
+    ];
     systemd = {
       enable = true;
       environment = [

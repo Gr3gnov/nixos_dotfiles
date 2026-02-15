@@ -15,7 +15,7 @@
       "$mod, C, global, caelestia:showall"
       "$mod SHIFT, N, global, caelestia:clearNotifs"
       "$mod, ESCAPE, global, caelestia:session"
-      "$mod SHIFT, V, exec, caelestia clipboard"
+      "$mod SHIFT, V, exec, clipboard-history-picker"
 
       "$mod, Q, killactive,"
       "$mod SHIFT, Q, exit,"

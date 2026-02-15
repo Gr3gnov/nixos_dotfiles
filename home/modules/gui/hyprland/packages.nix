@@ -1,6 +1,31 @@
-{ pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}:
+
+let
+  clipboardHistoryPicker = pkgs.writeShellScriptBin "clipboard-history-picker" ''
+    set -eu
+
+    # cliphist-fuzzel-img expects common tools in PATH.
+    export PATH="${lib.makeBinPath [
+      pkgs.cliphist
+      pkgs.fuzzel
+      pkgs.wl-clipboard
+      pkgs.gawk
+      pkgs.findutils
+      pkgs.coreutils
+      pkgs.gnugrep
+    ]}"
+
+    exec ${pkgs.cliphist}/bin/cliphist-fuzzel-img
+  '';
+in
+{
+  home.file.".local/share/icons/hicolor/scalable/apps/clipboard-history-picker.svg".source =
+    "${pkgs.papirus-icon-theme}/share/icons/Papirus/24x24/apps/com.github.cryptowyrm.copypastegrab.svg";
+
   home.packages = with pkgs; [
     grim
     slurp
@@ -8,6 +33,7 @@
     networkmanagerapplet
     blueman
     pavucontrol
+    clipboardHistoryPicker
   ];
 
   xdg.desktopEntries = {
@@ -40,6 +66,21 @@
         "Utility"
         "Settings"
       ];
+    };
+
+    "clipboard-history-picker" = {
+      name = "Clipboard History";
+      genericName = "Clipboard Manager";
+      comment = "Browse clipboard history with image previews";
+      exec = "clipboard-history-picker";
+      icon = "clipboard-history-picker";
+      terminal = false;
+      type = "Application";
+      categories = [
+        "Utility"
+        "Office"
+      ];
+      settings.Keywords = "clipboard;history;cliphist;paste;";
     };
   };
 }
