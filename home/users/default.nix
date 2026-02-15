@@ -9,7 +9,6 @@
 {
   imports = [
     inputs."caelestia-shell".homeManagerModules.default
-    inputs.stylix.homeModules.stylix
     ../modules
   ];
 
