@@ -17,14 +17,11 @@ let
     {
       name,
       classRegex,
-      size,
-      move,
     }:
     {
-      inherit name size move;
+      inherit name;
       "match:class" = classRegex;
       workspace = "${socialWorkspace} silent";
-      float = "yes";
     };
 in
 {
@@ -32,20 +29,14 @@ in
     (mkSocialRule {
       name = "preset-ws3-yandex-music";
       classRegex = yandexMusicClass;
-      size = "760 1370";
-      move = "10 60";
     })
     (mkSocialRule {
       name = "preset-ws3-telegram";
       classRegex = telegramClass;
-      size = "850 1370";
-      move = "790 60";
     })
     (mkSocialRule {
       name = "preset-ws3-discord";
       classRegex = discordClass;
-      size = "1770 1370";
-      move = "1660 60";
     })
   ];
 }

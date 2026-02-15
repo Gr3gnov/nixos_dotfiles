@@ -73,8 +73,9 @@ in
       };
 
       misc = {
-        disable_hyprland_logo = true;
-        disable_splash_rendering = true;
+        # Show an immediate visual while the session finishes starting.
+        disable_hyprland_logo = false;
+        disable_splash_rendering = false;
       };
     };
   };

@@ -81,9 +81,4 @@
     enable = true;
     allowImages = true;
   };
-
-  services.swayosd = {
-    enable = true;
-    topMargin = 0.92;
-  };
 }

@@ -6,22 +6,43 @@
 }:
 let
   cfg = config.my.programs.hyprland;
+  sddmTheme = pkgs."elegant-sddm";
+  sddmThemeQtDeps =
+    (sddmTheme.propagatedUserEnvPkgs or [ ])
+    ++ (sddmTheme.propagatedBuildInputs or [ ]);
 in
 {
-  options.my.programs.hyprland.enable =
-    lib.mkEnableOption "Hyprland with greetd and ReGreet";
+  options.my.programs.hyprland.enable = lib.mkEnableOption "Hyprland desktop stack";
 
   config = lib.mkIf cfg.enable {
+    # Required when SDDM runs with DisplayServer=x11.
+    services.xserver.enable = true;
+
     programs.hyprland = {
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
     };
 
-    services.greetd.enable = true;
+    services.displayManager.sddm = {
+      enable = true;
+      # X11 is currently more stable for SDDM on NVIDIA and avoids visible
+      # black-frame artifacts during handoff to the user session.
+      wayland.enable = false;
+      theme = "Elegant";
+      extraPackages = sddmThemeQtDeps;
+    };
     services.displayManager.defaultSession = "hyprland";
 
-    programs.regreet.enable = true;
+    # Make the selected SDDM theme available in /run/current-system/sw.
+    environment.systemPackages = [ sddmTheme ];
+
+    # Clear login TTY contents on transitions to avoid one-frame visual leaks.
+    systemd.services.display-manager.serviceConfig = {
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
+    };
 
     programs.thunar.enable = true;
     services.gvfs.enable = true;

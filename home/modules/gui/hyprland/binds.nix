@@ -4,18 +4,18 @@
   wayland.windowManager.hyprland.settings = {
     bind = [
       # Launcher:
-      # - Physical Ctrl+Space -> rofi.
+      # - Physical Ctrl+Space -> Caelestia launcher.
       # - Physical Cmd+Space -> layout switch (from kb_options above).
-      "$mod, SPACE, exec, rofi -show drun"
+      "$mod, SPACE, global, caelestia:launcher"
       "$mod, TAB, exec, hyprctl dispatch hyprexpo:expo toggle"
 
       "$mod, RETURN, exec, alacritty"
       "$mod, E, exec, thunar"
-      "$mod, L, exec, hyprlock"
-      "$mod, C, exec, swaync-client -t -sw"
-      "$mod SHIFT, N, exec, swaync-client -d -sw"
-      "$mod, ESCAPE, exec, wlogout"
-      "$mod SHIFT, V, exec, cliphist list | rofi -dmenu -i -p clipboard | cliphist decode | wl-copy"
+      "$mod, L, global, caelestia:lock"
+      "$mod, C, global, caelestia:showall"
+      "$mod SHIFT, N, global, caelestia:clearNotifs"
+      "$mod, ESCAPE, global, caelestia:session"
+      "$mod SHIFT, V, exec, caelestia clipboard"
 
       "$mod, Q, killactive,"
       "$mod SHIFT, Q, exit,"
@@ -59,14 +59,14 @@
     ];
 
     binde = [
-      ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
-      ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
-      ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
-      ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+      ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
+      ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
     ];
 
     bindl = [
-      ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     ];
 

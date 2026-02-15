@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  username,
   ...
 }:
 
@@ -15,6 +16,7 @@ in
   config = lib.mkIf cfg.enable {
 
     hardware.graphics.enable = true;
+    hardware.i2c.enable = true;
 
     services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -30,6 +32,8 @@ in
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
+
+    users.users.${username}.extraGroups = lib.mkAfter [ "i2c" ];
 
   };
 }
