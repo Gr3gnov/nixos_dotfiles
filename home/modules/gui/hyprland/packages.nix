@@ -42,6 +42,21 @@ in
     clipboardHistoryPicker
   ];
 
+  # Keep applets installed for their GUI tools, but disable tray autostart.
+  xdg.configFile."autostart/nm-applet.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=NetworkManager Applet
+    Hidden=true
+  '';
+
+  xdg.configFile."autostart/blueman.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=Blueman Applet
+    Hidden=true
+  '';
+
   xdg.desktopEntries = {
     # Use an icon that is shipped with networkmanagerapplet in hicolor, so it
     # resolves even when legacy icon names are missing in the active theme.

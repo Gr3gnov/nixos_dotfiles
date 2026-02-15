@@ -33,7 +33,7 @@ in
 
       programs.zen-browser = {
         enable = true;
-        policies = import ./policies.nix;
+        policies = import ./policies.nix { inherit addons; };
 
         profiles.default = {
           id = 0;
