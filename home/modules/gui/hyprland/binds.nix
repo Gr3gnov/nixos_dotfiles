@@ -7,7 +7,9 @@
       # - Physical Ctrl+Space -> Caelestia launcher.
       # - Physical Cmd+Space -> layout switch (from kb_options above).
       "$mod, SPACE, global, caelestia:launcher"
+      ", code:248, global, caelestia:launcher"
       "$mod, TAB, exec, hyprctl dispatch hyprexpo:expo toggle"
+      ", XF86LaunchA, exec, hyprctl dispatch hyprexpo:expo toggle"
 
       "$mod, RETURN, exec, alacritty"
       "$mod, E, exec, thunar"
@@ -72,6 +74,9 @@
     ];
 
     bindl = [
+      ", XF86AudioPrev, exec, playerctl previous"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     ];

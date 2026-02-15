@@ -38,6 +38,7 @@ in
     networkmanagerapplet
     blueman
     pavucontrol
+    playerctl
     clipboardHistoryPicker
   ];
 

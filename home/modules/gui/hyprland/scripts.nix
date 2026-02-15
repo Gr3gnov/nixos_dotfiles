@@ -13,7 +13,7 @@ let
   screenshotFull = pkgs.writeShellScriptBin "screenshot-full-save" ''
     set -eu
 
-    screenshots_dir="${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots"
+    screenshots_dir="''${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots"
     timestamp="$(date +%Y-%m-%d_%H-%M-%S)"
     screenshot_path="$screenshots_dir/$timestamp.png"
 
