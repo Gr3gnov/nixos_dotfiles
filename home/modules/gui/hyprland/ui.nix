@@ -1,4 +1,5 @@
 {
+  assetsDir,
   lib,
   pkgs,
   username,
@@ -12,12 +13,17 @@ let
     "/nix/var/nix/profiles/default/share"
     "/run/current-system/sw/share"
   ];
+  avatarPath = assetsDir + "/avatar.jpg";
 in
 
 {
   programs.caelestia = {
     enable = true;
     cli.enable = true;
+    settings.services = {
+      useFahrenheit = false;
+      weatherLocation = "";
+    };
     systemd = {
       enable = true;
       environment = [
@@ -27,6 +33,9 @@ in
       ];
     };
   };
+
+  xdg.configFile."caelestia/avatar.jpg".source = avatarPath;
+  home.file.".face".source = avatarPath;
 
   home.packages = with pkgs; [
     adwaita-icon-theme

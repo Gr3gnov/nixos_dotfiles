@@ -40,6 +40,7 @@
       system = "x86_64-linux";
       username = "nekr0nk";
       userHome = "/home/${username}";
+      assetsDir = ./home/assets;
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
@@ -51,6 +52,7 @@
               inputs
               username
               userHome
+              assetsDir
               ;
           };
           modules = [
@@ -68,6 +70,7 @@
                   inputs
                   username
                   userHome
+                  assetsDir
                   ;
               };
               home-manager.backupFileExtension = "backup";
