@@ -64,13 +64,13 @@
 
     bindr = [
       "$mod, Q, killactive,"
+      ", XF86MonBrightnessUp, exec, night-filter up"
+      ", XF86MonBrightnessDown, exec, night-filter down"
     ];
 
     binde = [
       ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
-      ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
     ];
 
     bindl = [
