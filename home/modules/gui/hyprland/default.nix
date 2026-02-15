@@ -1,5 +1,6 @@
 {
   imports = [
+    ./mangohud.nix
     ./scripts.nix
     ./packages.nix
     ./ui.nix

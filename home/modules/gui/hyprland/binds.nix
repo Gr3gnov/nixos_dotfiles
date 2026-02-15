@@ -11,15 +11,14 @@
 
       "$mod, RETURN, exec, alacritty"
       "$mod, E, exec, thunar"
-      "$mod, L, global, caelestia:lock"
+      "$mod CTRL, Q, global, caelestia:lock"
       "$mod, C, global, caelestia:showall"
       "$mod, N, global, caelestia:sidebar"
       "$mod SHIFT, N, global, caelestia:clearNotifs"
       "$mod, ESCAPE, global, caelestia:session"
       "$mod SHIFT, V, exec, clipboard-history-picker"
 
-      "$mod, Q, killactive,"
-      "$mod SHIFT, Q, exit,"
+      "CTRL, F4, exit,"
       "$mod, F, fullscreen, 1"
       "$mod, V, togglefloating,"
 
@@ -57,6 +56,10 @@
 
       # Physical Cmd+Shift+4 screenshot to clipboard.
       "CTRL SHIFT, 4, exec, screenshot-region-copy"
+    ];
+
+    bindr = [
+      "$mod, Q, killactive,"
     ];
 
     binde = [

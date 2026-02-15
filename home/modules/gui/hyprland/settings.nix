@@ -34,7 +34,7 @@ in
       "$mod" = "SUPER";
 
       monitor = [
-        ",preferred,auto,1"
+        "DP-1,3440x1440@100,auto,1"
       ];
 
       env = [
