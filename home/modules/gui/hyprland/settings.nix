@@ -2,7 +2,7 @@
 
 let
   cursorTheme = "Bibata-Modern-Ice";
-  cursorSize = "24";
+  cursorSize = 24;
 
   launchYandexMusic = "${lib.getExe' pkgs.gtk3 "gtk-launch"} yandex-music-web";
   launchTelegram = lib.getExe pkgs.telegram-desktop;
@@ -19,6 +19,14 @@ let
   ];
 in
 {
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = cursorTheme;
+    size = cursorSize;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
@@ -39,7 +47,7 @@ in
 
       env = [
         "XCURSOR_THEME,${cursorTheme}"
-        "XCURSOR_SIZE,${cursorSize}"
+        "XCURSOR_SIZE,${toString cursorSize}"
       ];
 
       exec-once = autostartCore ++ autostartApps;

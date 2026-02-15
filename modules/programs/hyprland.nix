@@ -6,10 +6,14 @@
 }:
 let
   cfg = config.my.programs.hyprland;
-  sddmTheme = pkgs."elegant-sddm";
-  sddmThemeQtDeps =
-    (sddmTheme.propagatedUserEnvPkgs or [ ])
-    ++ (sddmTheme.propagatedBuildInputs or [ ]);
+  sddmTheme = pkgs."sddm-astronaut".override {
+    embeddedTheme = "pixel_sakura_static";
+  };
+  sddmThemeQtDeps = with pkgs.qt6; [
+    qtsvg
+    qtmultimedia
+    qtvirtualkeyboard
+  ];
 in
 {
   options.my.programs.hyprland.enable = lib.mkEnableOption "Hyprland desktop stack";
@@ -29,10 +33,10 @@ in
       # X11 is currently more stable for SDDM on NVIDIA and avoids visible
       # black-frame artifacts during handoff to the user session.
       wayland.enable = false;
-      theme = "Elegant";
+      theme = "sddm-astronaut-theme";
       extraPackages = sddmThemeQtDeps;
     };
-    services.displayManager.defaultSession = "hyprland";
+    services.displayManager.defaultSession = "hyprland-uwsm";
 
     # Make the selected SDDM theme available in /run/current-system/sw.
     environment.systemPackages = [ sddmTheme ];
