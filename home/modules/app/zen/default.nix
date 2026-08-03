@@ -10,13 +10,19 @@ let
   addons = inputs.addons.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
+  # The profile lives in ~/.config/zen — both this module and the browser moved
+  # there from the legacy ~/.zen in 2026. If ~/.zen ever reappears the browser
+  # prefers it, silently starting an unmanaged profile where none of the
+  # settings or extensions below apply; deleting it is the fix.
   imports = [ inputs.zen-browser.homeModules.default ];
 
   options.my.app.zen.enable = lib.mkEnableOption "Zen browser with policies & extensions";
 
   config = lib.mkIf cfg.enable (
     let
-      zenDesktopFile = config.programs.zen-browser.package.meta.desktopFileName;
+      # Upstream dropped meta.desktopFileName in 2026; keep reading it when
+      # present and fall back to the name the package actually ships.
+      zenDesktopFile = config.programs.zen-browser.package.meta.desktopFileName or "zen-beta.desktop";
     in
     {
       xdg.mimeApps = {

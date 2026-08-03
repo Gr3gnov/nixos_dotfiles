@@ -3,6 +3,7 @@
 {
   imports = [
     ./terminal.nix
-    ./hyprland
+    ./cursor.nix
+    ./plasma
   ];
 }

@@ -18,9 +18,10 @@
   my.hardware.sound.enable = true;
   my.hardware.logitech.enable = true;
   my.hardware.power.enable = true;
+  my.hardware.keyboard.enable = true;
 
   # Programs modules
-  my.programs.hyprland.enable = true;
+  my.programs.plasma.enable = true;
   my.programs.steam.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;

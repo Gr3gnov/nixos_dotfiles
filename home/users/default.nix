@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   username,
   userHome,
@@ -8,7 +7,6 @@
 
 {
   imports = [
-    inputs."caelestia-shell".homeManagerModules.default
     ../modules
   ];
 
@@ -21,9 +19,13 @@
 
   # Home modules
   my.gui.terminal.enable = true;
+  my.gui.cursor.enable = true;
+  my.gui.plasma.enable = true;
   my.shell.zsh.enable = true;
   my.app.zen.enable = true;
   my.app.yandexMusicWeb.enable = true;
+  my.app.mangohud.enable = true;
+  my.app.vicinae.enable = true;
 
   # User-facing desktop apps
   home.packages = with pkgs; [
@@ -32,5 +34,9 @@
     telegram-desktop
     discord
     zathura
+
+    # CLI helpers that Plasma's own tools do not cover.
+    wl-clipboard
+    playerctl
   ];
 }

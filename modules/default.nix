@@ -12,8 +12,9 @@
     ./hardware/sound.nix
     ./hardware/logitech.nix
     ./hardware/power.nix
+    ./hardware/keyboard.nix
 
-    ./programs/hyprland.nix
+    ./programs/plasma.nix
     ./programs/steam.nix
   ];
 }
