@@ -48,6 +48,7 @@ in
       "autostart/org.telegram.desktop.desktop".source =
         "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop";
       "autostart/discord.desktop".source = "${pkgs.discord}/share/applications/discord.desktop";
+      "autostart/spotify.desktop".source = "${pkgs.spotify}/share/applications/spotify.desktop";
     };
   };
 }

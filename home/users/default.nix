@@ -23,7 +23,6 @@
   my.gui.plasma.enable = true;
   my.shell.zsh.enable = true;
   my.app.zen.enable = true;
-  my.app.yandexMusicWeb.enable = true;
   my.app.mangohud.enable = true;
   my.app.vicinae.enable = true;
 
@@ -33,6 +32,7 @@
     nixfmt
     telegram-desktop
     discord
+    spotify
     zathura
 
     # CLI helpers that Plasma's own tools do not cover.
