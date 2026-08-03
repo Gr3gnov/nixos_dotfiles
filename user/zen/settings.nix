@@ -7,7 +7,8 @@
   "intl.accept_languages" = "ru-RU,ru,en-US,en";
 
   # Theme
-  "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+  # No activeThemeID here on purpose: Zen ships its own theming, and pointing
+  # this at a Firefox theme that is not installed did nothing.
   "layout.css.prefers-color-scheme.content-override" = 0;
   "devtools.theme" = "dark";
   "ui.systemUsesDarkTheme" = 1;
@@ -15,7 +16,7 @@
   # Notification
   "permissions.default.desktopNotification" = 2;
 
-  # PiP
+  # PiP is off. The hover toggle only exists to start PiP, so it went with it —
+  # flip this to true to get both back.
   "media.videocontrols.picture-in-picture.enabled" = false;
-  "media.videocontrols.picture-in-picture.video-toggle.enabled" = true;
 }

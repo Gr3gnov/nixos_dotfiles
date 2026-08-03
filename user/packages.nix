@@ -8,7 +8,6 @@
     telegram-desktop
     discord
     spotify
-    zathura
 
     nixfmt # formatter for this repo
 

@@ -28,6 +28,12 @@
     "Switch to Desktop 3" = "Meta+3";
     "Switch to Desktop 4" = "Meta+4";
 
+    # The MX Master 4's Back/Forward buttons send exactly these — logid maps
+    # them to Ctrl+comma and Ctrl+dot, which the XKB swap turns into Meta.
+    # See machine/hardware/logid.cfg.
+    "Switch to Previous Desktop" = "Meta+,";
+    "Switch to Next Desktop" = "Meta+.";
+
     "Window to Desktop 1" = "Meta+Shift+1";
     "Window to Desktop 2" = "Meta+Shift+2";
     "Window to Desktop 3" = "Meta+Shift+3";
