@@ -22,6 +22,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    claude-code-nix = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -50,6 +55,8 @@
           };
           modules = [
             ./hosts/desktop/default.nix
+
+            { nixpkgs.overlays = [ inputs.claude-code-nix.overlays.default ]; }
 
             home-manager.nixosModules.home-manager
             {
