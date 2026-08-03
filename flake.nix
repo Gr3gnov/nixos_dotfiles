@@ -42,7 +42,6 @@
       system = "x86_64-linux";
       username = "nekr0nk";
       userHome = "/home/${username}";
-      assetsDir = ./home/assets;
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
@@ -50,31 +49,25 @@
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit
-              username
-              userHome
-              assetsDir
-              ;
+            inherit username userHome;
           };
           modules = [
-            ./hosts/desktop/default.nix
+            # Everything that needs root and applies to the whole machine.
+            ./machine
 
             { nixpkgs.overlays = [ inputs.claude-code-nix.overlays.default ]; }
 
+            # Everything that is yours and runs as you. Home-manager is a NixOS
+            # module here, so one rebuild applies both halves.
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.${username} = import ./home/users/default.nix;
+              home-manager.users.${username} = import ./user;
 
               home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  username
-                  userHome
-                  assetsDir
-                  ;
+                inherit inputs username userHome;
               };
               home-manager.backupFileExtension = "backup";
               home-manager.overwriteBackup = true;
