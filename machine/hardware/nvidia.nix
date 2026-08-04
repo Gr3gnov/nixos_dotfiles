@@ -11,6 +11,17 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Load the driver in the initrd, before Plymouth starts. Otherwise Plymouth
+  # comes up on the firmware's simpledrm framebuffer, nvidia_drm takes the
+  # display over a moment later, simpledrm disappears and the splash is left
+  # with no device to draw on — which looks like a black screen.
+  boot.initrd.kernelModules = [
+    "nvidia"
+    "nvidia_modeset"
+    "nvidia_uvm"
+    "nvidia_drm"
+  ];
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;

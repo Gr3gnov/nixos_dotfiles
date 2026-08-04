@@ -16,6 +16,7 @@
     ./users.nix
 
     ./desktop.nix # Plasma 6 and SDDM
+    ./plymouth.nix # silent graphical boot
     ./gaming.nix # Steam and friends
 
     ./hardware/nvidia.nix
@@ -30,6 +31,10 @@
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 15;
+    # consoleMode is deliberately left at its default. Setting it to "max" was
+    # tried to stop the monitor from re-syncing between the boot menu and the
+    # session: it cost 1.7s of extra loader time and the screen still blanked,
+    # because EFI cannot do 100 Hz and the kernel has to switch modes regardless.
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
