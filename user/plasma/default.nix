@@ -1,8 +1,3 @@
-# Your Plasma settings. Plasma itself is installed by machine/desktop.nix.
-#
-# The workflow this is built around: change something in System Settings, then
-# run `nix run github:nix-community/plasma-manager#rc2nix` to see the Nix for
-# what you just clicked, and paste the part you want to keep into these files.
 {
   inputs,
   lib,
@@ -40,12 +35,4 @@
     };
   };
 
-  # Started at login. Adding one here beats ticking a box in System Settings,
-  # because this file survives a reinstall.
-  xdg.configFile = {
-    "autostart/org.telegram.desktop.desktop".source =
-      "${pkgs.telegram-desktop}/share/applications/org.telegram.desktop.desktop";
-    "autostart/discord.desktop".source = "${pkgs.discord}/share/applications/discord.desktop";
-    "autostart/spotify.desktop".source = "${pkgs.spotify}/share/applications/spotify.desktop";
-  };
 }
