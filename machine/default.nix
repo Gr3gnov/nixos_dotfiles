@@ -13,6 +13,7 @@
     ./avatar.nix # user picture on the login screen
     ./plymouth.nix # silent graphical boot
     ./gaming.nix # Steam and friends
+    ./nix-ld.nix # run binaries built for ordinary distros
 
     ./hardware/nvidia.nix
     ./hardware/sound.nix
@@ -36,7 +37,6 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking.networkmanager.insertNameservers = [
-    "192.168.10.49"
     "1.1.1.1"
   ];
 

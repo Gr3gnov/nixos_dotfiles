@@ -10,6 +10,7 @@
     ./shell.nix
     ./terminal.nix
     ./cursor.nix
+    ./vscode.nix
 
     ./plasma
     ./zen
