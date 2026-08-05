@@ -15,6 +15,7 @@
     ./zen
     ./vicinae.nix
     ./mangohud.nix
+  ];
 
   home.username = username;
   home.homeDirectory = userHome;
