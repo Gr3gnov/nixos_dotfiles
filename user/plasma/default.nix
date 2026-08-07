@@ -24,6 +24,8 @@
       };
     };
 
+    session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+
     input = import ./input.nix;
     kwin = import ./kwin.nix;
     shortcuts = import ./shortcuts.nix;
