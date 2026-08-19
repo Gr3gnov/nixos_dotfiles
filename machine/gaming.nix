@@ -15,8 +15,18 @@
     gamescopeSession.enable = true;
   };
 
-  programs.gamescope.enable = true;
-  programs.gamemode.enable = true;
+  programs.gamescope = {
+    enable = true;
+    # setcap cap_sys_nice on the gamescope binary so it can raise its own
+    # scheduler priority — smoother frame pacing under load.
+    capSysNice = true;
+  };
+
+  programs.gamemode = {
+    enable = true;
+    # When a game activates gamemode, renice it above normal desktop tasks.
+    settings.general.renice = 10;
+  };
 
   environment.systemPackages = with pkgs; [
     mangohud

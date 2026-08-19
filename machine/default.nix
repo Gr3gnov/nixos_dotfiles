@@ -48,6 +48,10 @@
 
   virtualisation.docker.enable = true;
 
+  # TRIM the SSD weekly — keeps the Steam library and nix store from degrading
+  # as free blocks fragment.
+  services.fstrim.enable = true;
+
   # The NixOS release this host was first installed with. Do not bump it.
   system.stateVersion = "25.11";
 }
