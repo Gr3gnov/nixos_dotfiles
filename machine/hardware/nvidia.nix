@@ -27,6 +27,10 @@
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.production;
+    # Without this, suspend/resume leaves VRAM state uninitialized: black
+    # screen at the password prompt, then missing wallpaper and a glitched
+    # compositor after login.
+    powerManagement.enable = true;
   };
 
   environment.sessionVariables = {

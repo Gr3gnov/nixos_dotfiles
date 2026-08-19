@@ -147,6 +147,28 @@ let
   };
 
   settingsPath = "${config.home.homeDirectory}/.config/Code/User/settings.json";
+
+  keybindings = (pkgs.formats.json { }).generate "vscode-keybindings.json" [
+    {
+      key = "ctrl+shift+alt+down";
+      command = "-editor.action.copyLinesDownAction";
+    }
+    {
+      key = "ctrl+shift+alt+up";
+      command = "-editor.action.copyLinesUpAction";
+    }
+    {
+      key = "ctrl+alt+down";
+      command = "editor.action.copyLinesDownAction";
+      when = "editorTextFocus && !editorReadonly";
+    }
+    {
+      key = "ctrl+alt+up";
+      command = "editor.action.copyLinesUpAction";
+      when = "editorTextFocus && !editorReadonly";
+    }
+  ];
+  keybindingsPath = "${config.home.homeDirectory}/.config/Code/User/keybindings.json";
 in
 {
   programs.vscode = {
@@ -177,5 +199,7 @@ in
   home.activation.vscodeSettings = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     $DRY_RUN_CMD rm -f ${settingsPath}
     $DRY_RUN_CMD install -Dm644 ${settings} ${settingsPath}
+    $DRY_RUN_CMD rm -f ${keybindingsPath}
+    $DRY_RUN_CMD install -Dm644 ${keybindings} ${keybindingsPath}
   '';
 }
